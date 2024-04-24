@@ -37,3 +37,33 @@
 <b>Channel:</b> 272 Emails, 278 LinkedIn, 113 Website, 74 Bidding, 40 Apollo.io, 19 Tender, 13 Paid, 3 Referral, 1 Cold call, 1 Job Board, 1 Nurturing, 31 No Channel Data Available.
 
 <b>Lead Score:</b> Score of lead is calculated through defined formula to understand business potential from the lead.Higher the lead score, better the lead.
+
+<p>Import Libraries</p>
+<pre>
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt 
+</pre>
+
+<p>
+  Loading Data
+</p>
+<pre>
+  import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+</pre>
+<p>
+  View Dataframe
+</p>
+<pre>df</pre>
+<p>
+  Total Rows & Columns
+</p>
+<pre>df.shape</pre>
+<p>
+  Data Information
+</p>
+<pre>
+  df.info()
+</pre>
