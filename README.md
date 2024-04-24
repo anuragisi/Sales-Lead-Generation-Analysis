@@ -22,3 +22,18 @@
         <li>3. Lost - 9 customer, 38 proposals, 257 QL, 4 UQL have decided not to proceed with the purchase.</li>
         <li>4. Nurture - 8  proposals, 215 QL, 2 UQL requires further nurturing to build their interest.</li>
 </ul>
+<b>Prospect Creation Date:</b>b> Date of identification of the entities through different channels.
+
+<b>Lead Creation Date:</b> Date on which first positive response from that entities is received.
+
+<b>QL Creation Date:</b> Date on which Sales Team marked them as a genuine customer/lead through defined process.
+
+<b>Lost Date:</b> Date on which the customer/lead did not convert.
+
+<b>Nurture Date:</b> Date on which customers/leads further nutured to build their intereest.
+
+<b>Won Date:</b> Date on which customer/lead convert into QL.
+
+<b>Channel:</b> 272 Emails, 278 LinkedIn, 113 Website, 74 Bidding, 40 Apollo.io, 19 Tender, 13 Paid, 3 Referral, 1 Cold call, 1 Job Board, 1 Nurturing, 31 No Channel Data Available.
+
+<b>Lead Score:</b> Score of lead is calculated through defined formula to understand business potential from the lead.Higher the lead score, better the lead.
