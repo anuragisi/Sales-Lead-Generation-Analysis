@@ -7,7 +7,6 @@
 <b>Entity Name:</b> Names of the 846 lead organization.
 
 <b>Current Stage:</b>
-<pre>
   <ul>
         <li>1. Customer - Identified **45** potential customers who may be interested in the product/service, but not yet engaged.</li>
         <li>2. Proposal - Sending proposal to **64** potential customers.</li>
@@ -15,4 +14,4 @@
         <li>4. Recently Qualified Lead (RQL) - **6** customers/leads recently qualified by Sales Team as a genuine.</li>
         <li>5. Unqualified Lead (UQL) - **10** customers/leads not qualified by Sales Team as a genuine, may further require nurturing.</li>
   </ul>
-</pre>
+
