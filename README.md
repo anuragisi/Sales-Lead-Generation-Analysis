@@ -15,3 +15,10 @@
         <li>5. Unqualified Lead (UQL) - **10** customers/leads not qualified by Sales Team as a genuine, may further require nurturing.</li>
   </ul>
 
+<b>Status</b>
+<ul>
+  <li>1. Active - 36 customers/leads, 18 proposals, 248 QL, 6 RQL, 4 UQL</li>
+        <li>2. Free - 1 QL may have not been qualified further.</li>
+        <li>3. Lost - 9 customer, 38 proposals, 257 QL, 4 UQL have decided not to proceed with the purchase.</li>
+        <li>4. Nurture - 8  proposals, 215 QL, 2 UQL requires further nurturing to build their interest.</li>
+</ul>
