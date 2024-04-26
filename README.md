@@ -146,7 +146,7 @@ for i in df.columns.tolist():
   <img width="336" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/a473a2c0-d957-41c1-8e44-295c68f00547">
 </samp>
 <pre>
-  # Plot a bar chart
+  #Plot a bar chart
 plt.figure(figsize=(10, 6))
 df['Channel'].value_counts().plot(kind='bar', color='skyblue')
 plt.title('Distribution of Channels')
@@ -162,15 +162,15 @@ plt.show()
   Comparing each Channels with mean Lead Score
 </p>
 <pre>
-  # Count of unique channels
+  #Count of unique channels
 channel_counts = df['Channel'].value_counts().reset_index()
 channel_counts.columns = ['Channel', 'Count']
 
-# Median lead score for each channel
+  #Median lead score for each channel
 channel_lead = df.groupby('Channel')['Lead Score'].median().reset_index()
 channel_lead.columns = ['Channel', 'Median Lead Score']
 
-# Merge the two DataFrames on the 'Channel' column
+  #Merge the two DataFrames on the 'Channel' column
 channel_l = pd.merge(channel_counts, channel_lead, on='Channel')
 
 channel_l
@@ -179,7 +179,7 @@ channel_l
 <img width="535" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/d5aefcd6-b1fd-4cfd-9647-3d2d8ace3117">
 </samp>
 <pre>
-  # Plot a bar graph
+  #Plot a bar graph
 plt.figure(figsize=(10, 6))
 plt.bar(channel_lead['Channel'], channel_lead['Median Lead Score'], color='skyblue')
 plt.xlabel('Channel')
@@ -192,49 +192,49 @@ plt.grid(axis='y')
   <img width="702" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/2c05321f-9e6a-4646-8476-56b24d5b5497">
 </samp>
 <pre>
-  # Count of unique channels
+  #Count of unique channels
 channel_counts = df['Channel'].value_counts().reset_index()
 channel_counts.columns = ['Channel', 'Count']
 
-# Median lead score for each channel
+  #Median lead score for each channel
 channel_lead = df.groupby('Channel')['Lead Score'].median().reset_index()
 channel_lead.columns = ['Channel', 'Median Lead Score']
 channel_lead = channel_lead.sort_values(by='Median Lead Score')
 
-# Merge the two DataFrames on the 'Channel' column
+  #Merge the two DataFrames on the 'Channel' column
 result_df = pd.merge(channel_counts, channel_lead, on='Channel')
 
-# Display the combined DataFrame
+  #Display the combined DataFrame
 print(result_df)
 </pre>
 <samp>
 <img width="534" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/b95fefbd-2b20-43bc-8bf3-1979a794dd58">
 </samp>
 <pre>
-  # Larger plot size
+  #Larger plot size
 fig, ax1 = plt.subplots(figsize=(25, 15))
 
-# Bar plot for counts
+  #Bar plot for counts
 color = 'tab:blue'
 ax1.set_xlabel('Channel')
 ax1.set_ylabel('Count', color=color)
 ax1.bar(result_df['Channel'], result_df['Count'], color=color)
 ax1.tick_params(axis='y', labelcolor=color)
 
-# Creating a second y-axis for the line plot
+  #Creating a second y-axis for the line plot
 ax2 = ax1.twinx()
 color = 'tab:red'
 ax2.set_ylabel('Median Lead Score', color=color)
 ax2.plot(result_df['Channel'], result_df['Median Lead Score'], color=color, marker='o')
 ax2.tick_params(axis='y', labelcolor=color)
 
-# Title
+  #Title
 plt.title('Comparison of Counts and Median Lead Score for Each Channel')
 
-# Rotating x-axis labels for better readability
+  #Rotating x-axis labels for better readability
 plt.xticks(rotation=45, ha='right')
 
-# Display the plot
+  #Display the plot
 plt.show()
 </pre>
 <samp>
@@ -252,7 +252,7 @@ lead_s
   <img width="472" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/47cd328b-3631-45d9-a3e5-50a0b23f929b">
 </samp>
 <pre>
-  # Plot the data in a line chart
+  #Plot the data in a line chart
 plt.figure(figsize=(10, 6))
 plt.plot(lead_s['Sales Owner'], lead_s['Entity Name'], marker='o', linestyle='-', color='b')
 plt.title('Number of Entities per Sales Owner')
@@ -275,18 +275,18 @@ plt.show()
   <img width="649" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/161aaeb5-476f-452b-aaca-a7ccdf47a4f3">
 </samp>
 <pre>
-  # Plot a horizontal bar chart
+  #Plot a horizontal bar chart
 ax = df['Current Stage'].value_counts().plot(kind='barh', stacked=True, colormap='viridis', figsize=(10, 6))
 
-# Add labels and title
+  #Add labels and title
 ax.set_xlabel('Percentage')
 ax.set_ylabel('Current Stage')
 ax.set_title('Current Stage Distribution')
 
-# Display the legend
+  #Display the legend
 ax.legend(title='Current Stage', bbox_to_anchor=(1.05, 1), loc='upper left')
 
-# Show the plot
+  #Show the plot
 plt.show()
 </pre>
 <samp>
@@ -303,7 +303,7 @@ plt.show()
 <pre>
   customer_data = df.loc[df['Current Stage'] == 'Customer', ['Current Stage', 'Won Date']]
 
-# Display the result
+  #Display the result
 print(customer_data.count())
 </pre>
 <samp>
@@ -311,10 +311,10 @@ print(customer_data.count())
 </samp>
 <pre>
   customer_data['No Won Date'] = customer_data['Won Date'].isnull()
-# Count the occurrences of non-null and null values in 'Won Date'
+  #Count the occurrences of non-null and null values in 'Won Date'
 won_date_counts = customer_data['Won Date'].notnull().value_counts()
 
-# Plot a pie chart
+  #Plot a pie chart
 plt.figure(figsize=(8, 8))
 plt.pie(won_date_counts, labels=['Customer', 'Lost'], autopct='%1.1f%%', colors=['lightblue', 'lightcoral'])
 plt.title('Distribution of Won Date for Customer Stage=Customer')
@@ -329,17 +329,17 @@ plt.show()
 <pre>
   customer_data1 = df.loc[df['Current Stage'] == 'Proposal', ['Current Stage', 'Won Date']]
 
-# Display the result
+  #Display the result
 print(customer_data1.count())
 </pre>
 <samp>
 <img width="542" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/dab240ae-930e-4030-91a1-7421037aae80">
 </samp>
 <pre>
-  # Count the occurrences of non-null and null values in 'Won Date'
+  #Count the occurrences of non-null and null values in 'Won Date'
 won_date_count = customer_data1['Won Date'].notnull().value_counts()
 
-# Plot a pie chart
+  #Plot a pie chart
 plt.figure(figsize=(8, 8))
 plt.pie(won_date_count, labels=['Lost', 'Customer'], autopct='%1.1f%%', colors=['lightblue','darkblue'])
 plt.title('Distribution of Won Date for Customer Stage=Proposal')
@@ -354,7 +354,7 @@ plt.show()
 <pre>
   customer_data2 = df.loc[df['Current Stage'] == 'QL', ['Current Stage', 'Won Date']]
 
-# Display the result
+  #Display the result
 print(customer_data2.count())
 </pre>
 <samp>
@@ -366,7 +366,7 @@ print(customer_data2.count())
 <pre>
   customer_data3 = df.loc[df['Current Stage'] == 'RQL', ['Current Stage', 'Won Date']]
 
-# Display the result
+  #Display the result
 print(customer_data3.count())
 </pre>
 <samp>
@@ -378,7 +378,7 @@ print(customer_data3.count())
 <pre>
   customer_data4 = df.loc[df['Current Stage'] == 'UQL', ['Current Stage', 'Won Date']]
 
-# Display the result
+  #Display the result
 print(customer_data4.count())
 </pre>
 <samp>
@@ -387,13 +387,13 @@ print(customer_data4.count())
 <p>Lead Response Time</p>
 <p>We are finding the difference between QL Creation Date and Prospect Creation Date.</p>
 <pre>
-  # Select only the relevant columns
+  #Select only the relevant columns
 df['Date Difference'] = df['QL Creation  Date'] - df['Prospect Creation Date']
 df_sorted = df.sort_values(by='Date Difference')
-  # Select only the relevant columns
+  #Select only the relevant columns
 result_df = df_sorted[['Date Difference','Won Date']]
 #result_df
-  # Select only the relevant columns
+  #Select only the relevant columns
 result_df = df_sorted[['Date Difference','Won Date']]
 result_df.count()
 </pre>
@@ -408,19 +408,19 @@ result_df.count()
   </ul>
 </p>
 <pre>
-  # Filter based on Date Difference < 0 and count not null Won Date
+  #Filter based on Date Difference < 0 and count not null Won Date
 negative_difference = df[df['Date Difference'] < pd.Timedelta(0)]
 count_not_null_won_date_negative = negative_difference['Won Date'].count()
 
-# Filter based on Date Difference = 0 and count not null Won Date
+#Filter based on Date Difference = 0 and count not null Won Date
 equal_difference = df[df['Date Difference'] == pd.Timedelta(0)]
 count_not_null_won_date_equal = equal_difference['Won Date'].count()
 
-# Filter based on Date Difference > 0 and count not null Won Date
+#Filter based on Date Difference > 0 and count not null Won Date
 non_negative_difference = df[df['Date Difference'] > pd.Timedelta(0)]
 count_not_null_won_date_non_negative = non_negative_difference['Won Date'].count()
 
-# Display the results
+#Display the results
 print(f"{count_not_null_won_date_negative} number of leads won for OLD Entities/Prospects (where Date Difference < 0)")
 print(f"{count_not_null_won_date_equal} number of leads Won for New Entities/Prospects contacted on same day (where Date Difference = 0)")
 print(f"{count_not_null_won_date_non_negative} number of leads Won for New Entities/Prospects (where Date Difference > 0)")
@@ -429,7 +429,7 @@ print(f"{count_not_null_won_date_non_negative} number of leads Won for New Entit
 <img width="805" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/4d419896-0ced-41aa-b2ae-8063fa552264">
 </samp>
 <pre>
-  # Circular area plot
+  #Circular area plot
 categories = ['OLD Entities/Prospects', 'New Entities/Prospects contacted on same day', 'New Entities/Prospects']
 counts = [count_not_null_won_date_negative, count_not_null_won_date_equal, count_not_null_won_date_non_negative]
 
@@ -442,7 +442,7 @@ plt.setp(autotexts, size=8, weight="bold")
 
 ax.set_title("Count of Leads Won for Prospects/Entites categories")
 
-# Display the plot
+#Display the plot
 plt.show()
 </pre>
 <samp>
@@ -452,10 +452,10 @@ plt.show()
   For past Nurture entites, number of leads won
 </p>
 <pre>
-  # Count total Won Date when Nurture Date is not null
+  #Count total Won Date when Nurture Date is not null
 count_won_date_not_null_nurture = df[df['Nuture Date'].notnull()]['Won Date'].count()
 
-# Display the result
+  #Display the result
 print("Total Leads Won Date when Nurture Date is not null:", count_won_date_not_null_nurture)
 </pre>
 <samp>
