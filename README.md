@@ -238,5 +238,242 @@ plt.xticks(rotation=45, ha='right')
 plt.show()
 </pre>
 <samp>
-  ![image](https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/5fc8614c-1337-4dcb-800f-b809f7669862)
+  <img width="534" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/5fc8614c-1337-4dcb-800f-b809f7669862">
 </samp>
+<p>
+  Number of entities handled by each Sales Owner (Sales Team)
+</p>
+<pre>
+  lead_s = pd.DataFrame(df.groupby('Sales Owner')['Entity Name'].nunique())
+lead_s = lead_s.sort_values(by='Entity Name', ascending=False).reset_index()
+lead_s
+</pre>
+<samp>
+  <img width="472" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/47cd328b-3631-45d9-a3e5-50a0b23f929b">
+</samp>
+<pre>
+  # Plot the data in a line chart
+plt.figure(figsize=(10, 6))
+plt.plot(lead_s['Sales Owner'], lead_s['Entity Name'], marker='o', linestyle='-', color='b')
+plt.title('Number of Entities per Sales Owner')
+plt.xlabel('Sales Owner')
+plt.ylabel('Number of Entities')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+</pre>
+<samp>
+  <img width="689" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/6e7f2aa7-61be-4d28-a3a7-7e68f2dd6187">
+</samp>
+<p>
+  Current Stage Distribution
+</p>
+<pre>
+  df['Current Stage'].value_counts()
+</pre>
+<samp>
+  <img width="649" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/161aaeb5-476f-452b-aaca-a7ccdf47a4f3">
+</samp>
+<pre>
+  # Plot a horizontal bar chart
+ax = df['Current Stage'].value_counts().plot(kind='barh', stacked=True, colormap='viridis', figsize=(10, 6))
+
+# Add labels and title
+ax.set_xlabel('Percentage')
+ax.set_ylabel('Current Stage')
+ax.set_title('Current Stage Distribution')
+
+# Display the legend
+ax.legend(title='Current Stage', bbox_to_anchor=(1.05, 1), loc='upper left')
+
+# Show the plot
+plt.show()
+</pre>
+<samp>
+<img width="753" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/6f02014c-d2a2-4710-8d06-bff359b551d1">
+</samp>
+<p>
+  <b>
+    Conversion Rates at different stages
+  </b>
+</p>
+<p>
+  1.Stage = CUSTOMER
+</p>
+<pre>
+  customer_data = df.loc[df['Current Stage'] == 'Customer', ['Current Stage', 'Won Date']]
+
+# Display the result
+print(customer_data.count())
+</pre>
+<samp>
+<img width="536" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/b3b25e69-bf74-456e-a731-2097b62992f4">
+</samp>
+<pre>
+  customer_data['No Won Date'] = customer_data['Won Date'].isnull()
+# Count the occurrences of non-null and null values in 'Won Date'
+won_date_counts = customer_data['Won Date'].notnull().value_counts()
+
+# Plot a pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(won_date_counts, labels=['Customer', 'Lost'], autopct='%1.1f%%', colors=['lightblue', 'lightcoral'])
+plt.title('Distribution of Won Date for Customer Stage=Customer')
+plt.show()
+</pre>
+<samp>
+  <img width="642" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/4eea9a3c-9a83-4558-8de8-77757233d54a">
+</samp>
+<p>
+  2.Stage = Proposal
+</p>
+<pre>
+  customer_data1 = df.loc[df['Current Stage'] == 'Proposal', ['Current Stage', 'Won Date']]
+
+# Display the result
+print(customer_data1.count())
+</pre>
+<samp>
+<img width="542" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/dab240ae-930e-4030-91a1-7421037aae80">
+</samp>
+<pre>
+  # Count the occurrences of non-null and null values in 'Won Date'
+won_date_count = customer_data1['Won Date'].notnull().value_counts()
+
+# Plot a pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(won_date_count, labels=['Lost', 'Customer'], autopct='%1.1f%%', colors=['lightblue','darkblue'])
+plt.title('Distribution of Won Date for Customer Stage=Proposal')
+plt.show()
+</pre>
+<samp>
+  <img width="620" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/49394bd5-4f2c-47dc-835d-13c73d3d4670">
+</samp>
+<p>
+  3.Stage = QL
+</p>
+<pre>
+  customer_data2 = df.loc[df['Current Stage'] == 'QL', ['Current Stage', 'Won Date']]
+
+# Display the result
+print(customer_data2.count())
+</pre>
+<samp>
+<img width="518" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/58a719a2-69e2-4609-9b59-b6c4b9b9e5ca">
+</samp>
+<p>
+  4.Stage = RQL
+</p>
+<pre>
+  customer_data3 = df.loc[df['Current Stage'] == 'RQL', ['Current Stage', 'Won Date']]
+
+# Display the result
+print(customer_data3.count())
+</pre>
+<samp>
+<img width="518" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/f3d5c165-f2a3-448f-8329-3518cad42b51">
+</samp>
+<p>
+  5.Stage = UQL
+</p>
+<pre>
+  customer_data4 = df.loc[df['Current Stage'] == 'UQL', ['Current Stage', 'Won Date']]
+
+# Display the result
+print(customer_data4.count())
+</pre>
+<samp>
+<img width="518" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/7e5678b1-3fee-4b7b-bcfb-ce9d0294fa31">
+</samp>
+<p>Lead Response Time</p>
+<p>We are finding the difference between QL Creation Date and Prospect Creation Date.</p>
+<pre>
+  # Select only the relevant columns
+df['Date Difference'] = df['QL Creation  Date'] - df['Prospect Creation Date']
+df_sorted = df.sort_values(by='Date Difference')
+  # Select only the relevant columns
+result_df = df_sorted[['Date Difference','Won Date']]
+#result_df
+  # Select only the relevant columns
+result_df = df_sorted[['Date Difference','Won Date']]
+result_df.count()
+</pre>
+<samp>
+  <img width="507" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/7ab6b842-b88f-45b9-9b55-1fe7f004317e">
+</samp>
+<p>
+  Assuming here that,
+  <ul>
+    <li>QL Creation Date on/after Prospect Creation Date, then its NEW entity into the database.</li>
+    <li>QL Creation Date before Prospect Creation Date, then its OLD entity from the database.</li>
+  </ul>
+</p>
+<pre>
+  # Filter based on Date Difference < 0 and count not null Won Date
+negative_difference = df[df['Date Difference'] < pd.Timedelta(0)]
+count_not_null_won_date_negative = negative_difference['Won Date'].count()
+
+# Filter based on Date Difference = 0 and count not null Won Date
+equal_difference = df[df['Date Difference'] == pd.Timedelta(0)]
+count_not_null_won_date_equal = equal_difference['Won Date'].count()
+
+# Filter based on Date Difference > 0 and count not null Won Date
+non_negative_difference = df[df['Date Difference'] > pd.Timedelta(0)]
+count_not_null_won_date_non_negative = non_negative_difference['Won Date'].count()
+
+# Display the results
+print(f"{count_not_null_won_date_negative} number of leads won for OLD Entities/Prospects (where Date Difference < 0)")
+print(f"{count_not_null_won_date_equal} number of leads Won for New Entities/Prospects contacted on same day (where Date Difference = 0)")
+print(f"{count_not_null_won_date_non_negative} number of leads Won for New Entities/Prospects (where Date Difference > 0)")
+</pre>
+<samp>
+<img width="805" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/4d419896-0ced-41aa-b2ae-8063fa552264">
+</samp>
+<pre>
+  # Circular area plot
+categories = ['OLD Entities/Prospects', 'New Entities/Prospects contacted on same day', 'New Entities/Prospects']
+counts = [count_not_null_won_date_negative, count_not_null_won_date_equal, count_not_null_won_date_non_negative]
+
+fig, ax = plt.subplots(subplot_kw=dict(aspect="equal"))
+
+wedges, texts, autotexts = ax.pie(counts, autopct='%1.1f%%', textprops=dict(color="w"))
+
+ax.legend(wedges, categories, title="Categories", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
+plt.setp(autotexts, size=8, weight="bold")
+
+ax.set_title("Count of Leads Won for Prospects/Entites categories")
+
+# Display the plot
+plt.show()
+</pre>
+<samp>
+  <img width="667" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/5bed8a6d-ecbd-45f7-8689-08b36cb29a6f">
+</samp>
+<p>
+  For past Nurture entites, number of leads won
+</p>
+<pre>
+  # Count total Won Date when Nurture Date is not null
+count_won_date_not_null_nurture = df[df['Nuture Date'].notnull()]['Won Date'].count()
+
+# Display the result
+print("Total Leads Won Date when Nurture Date is not null:", count_won_date_not_null_nurture)
+</pre>
+<samp>
+<img width="565" alt="image" src="https://github.com/anuragprasad95/Sales-Lead-Generation-Analysis/assets/3609255/d6f86133-1c69-4892-92fa-6cc01cc045ff">
+</samp>
+<p>
+  Actionable Insights found
+  <ul>
+    <li>Top 3 channels from where the 77.21% of the total entities are coming are LinkedIn, Email, Website.
+    <li>Top 3 channels for generating Quality Leads are Referral, Cold call, Job Board.</li>
+    <li>73.3% of leads converted from the entities having stage = Customers.</li>
+    <li>1.6% of leads convereted from entities having stage = Proposals.</li>
+    <li>There are negligible changes of converting leads when entities having stage = QL, RQL, UQL.</li>
+    <li>48.5% leads converting from new entities/prospects.</li>
+    <li>33.33% leads converting from entities/prospects which are contacted on same day through various channels.</li>
+    <li>18.20% leads converting from old entities/prospects.</li>
+    <li>12.12% leads converted from nurturing entities.</li>
+    <li>Restructing Lead Score formula because, leads converted when lead scroe<1 is 32, else its 1 only.</li>
+    <li>17 Sales owner had got most entities/propects but rest have few below 10 in numbers.</li>
+   </ul>
+</p>
